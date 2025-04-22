@@ -1,1 +1,4 @@
 /target
+**/target
+risui_resume/build.toml
+risui_resume/auto_resume.*

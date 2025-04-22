@@ -3,5 +3,32 @@
 version = 4
 
 [[package]]
+name = "either"
+version = "1.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
+
+[[package]]
+name = "itertools"
+version = "0.12.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ba291022dbbd398a455acf126c1e341954079855bc60dfdda641363bd6922569"
+dependencies = [
+ "either",
+]
+
+[[package]]
+name = "pandoc"
+version = "0.8.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "463d53d1a77a4291203dbf9d461365609e6857c95bd7d807098bffdc0a02a65c"
+dependencies = [
+ "itertools",
+]
+
+[[package]]
 name = "risui_resume"
 version = "0.1.0"
+dependencies = [
+ "pandoc",
+]

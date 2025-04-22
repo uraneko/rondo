@@ -1,0 +1,74 @@
+html {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	/* Cantarell; does not work */
+	font-family: carlito;
+	font-size: 6pt;
+}
+
+body {
+	padding: 4rem;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	flex-direction: column;
+	align-items: start;
+
+	& .header-child.name {
+		font-size: 14pt;
+		padding-left: 15.3rem;
+		padding-bottom: 1rem;
+	}
+
+	& .header-child.contacts {
+		display: flex;
+		flex-direction: row;
+
+		&>span,
+		&>a {
+			background-color: #6a85c633;
+			padding: 0.4rem 0.6rem;
+			border-radius: 3px;
+			margin: 1px;
+			font-weight: bold;
+			text-decoration: inherit;
+			color: #0b2f84;
+		}
+	}
+}
+
+.content {
+	& .content-section {
+		padding: 2rem;
+
+		&>.title {
+			font-size: 12pt;
+		}
+
+		& .entry,
+		.extra {
+			& .title {
+				font-size: 9pt;
+			}
+		}
+
+		& .extra {
+			display: flex;
+			flex-direction: column;
+
+			& .content {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
+
+	.content-section {
+		display: flex;
+		flex-direction: column;
+	}
+}
