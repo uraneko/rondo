@@ -4,7 +4,7 @@ pub(crate) fn side_projects<'a>(chap: Chapter) -> Result<SideProjects, ChapterEr
     let mut sps = SideProjects::default();
     let mut chap = chap.items.into_iter();
     while let [Some(k), Some(v)] = [chap.next(), chap.next()] {
-        sps.push(SideProject::from([k, v]))
+        sps.push(SideProject::from([k, v]));
     }
 
     Ok(sps)

@@ -129,11 +129,15 @@ impl Chapter {
     }
 
     fn items_fields(&mut self) {
-        let mut iter = &mut self.items;
+        let iter = &mut self.items;
         iter.reverse();
         let mut items: Vec<String> = Vec::new();
 
         'w0: while let Some(item) = iter.pop() {
+            // WARN very bad/brittle condition
+            // but entire parser wannabe will be replaced with a proper parser
+            // in issue 2; so no problem
+            // WARN block below is really wasteful; i push then pop the push again the same item
             if !item.starts_with(char::is_alphabetic) {
                 let mut head: String = items.pop().unwrap();
                 head.push_str(&item);
@@ -146,6 +150,7 @@ impl Chapter {
                         head.push_str(&item);
                     }
                 }
+                items.push(head);
             } else {
                 items.push(item);
             }
@@ -169,10 +174,6 @@ impl Chapter {
 
     fn push(&mut self, line: String) {
         self.items.push(line);
-    }
-
-    fn reverse(&mut self) {
-        self.items.reverse()
     }
 
     fn read(&self, field: &str) -> Option<&str> {

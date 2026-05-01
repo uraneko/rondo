@@ -36,26 +36,26 @@ const BOILERPLATE: &str = "<!DOCTYPE html>
   <body>
     <div class='header'>";
 
+// <span class='item'><span class='entry phone'>{phone}</span></span>
 const META_BP: &str = "
  <span class='header-child name'>Iadh Makhlouf</span>
  <span class='header-child contacts'>
-   <a class='github' href='{github}'>github</a>
-   <span class='email'>{email}</span>
-   <span class='phone'>{phone}</span>
-   <span class='country'>{country}</span>
+   <span class='item'><a class='entry github' href='{github}'>{github}</a></span>
+   <span class='item'><span class='entry email'>{email}</span></span>
+   <span class='item'><span class='entry country'>{country}</span></span>
  </span>
 </div>
 <div class='content'>
 <div class='content-section projects'>
-<span class='title'>Projects</span>
+<span class='title'>Open Source</span>
 ";
 
 fn generate_meta(meta: &Meta, bp: &mut String) {
     bp.push_str(
         &META_BP
-            .replace("{github}", meta.github_is())
+            .replacen("{github}", meta.github_is(), 2)
             .replace("{email}", meta.email_is())
-            .replace("{phone}", meta.phone_is())
+            // .replace("{phone}", meta.phone_is())
             .replace("{country}", meta.country_is()),
     )
 }
@@ -63,12 +63,12 @@ fn generate_meta(meta: &Meta, bp: &mut String) {
 const SP_BP: &str = "
 <div class='entry'>
   <a class='title' href = '{git}'>{name}</a>
-  <span class='skills'>{technologies}</span>
+  <div class='skills'>{technologies}</div>
   <span class='content'>{desc}</span>
 </div>
 ";
 
-const TECH_BP: &str = "<span class='tech'>{tech}</span>";
+const TECH_BP: &str = "<div class='tech'><span class='value'>{tech}</span></div>";
 
 const DIV_CLOSE_BP: &str = "</div>";
 
@@ -102,38 +102,38 @@ const SKILLS_BP: &str = "
 ";
 
 const SKILL_BP: &str = "
-<div class='entry'>
-  <span class='title'>{name}</span>
+<div class='{proficiency} entry'>
+<div class='content'>
+  <span class='skill'>{name}</span>
     <span class='sep'> | </span>
-  <span class='content'>{proficiency}</span>
+  <span class='proficiency'>{proficiency}</span>
+</div>
 </div>
 ";
 
 fn generate_skills(skills: &Skills, bp: &mut String) {
     bp.push_str(SKILLS_BP);
     // languages
-    bp.push_str(
-        "<div class='skills-langs skills-sub-section'>
-            <span class='title'>Languages</span>",
-    );
+    // <span class='title'>Languages</span>",
+    bp.push_str("<div class='skills-langs skills-sub-section'>");
     bp.push_str(
         &skills
             .langs_are()
             .into_iter()
             .map(|s| {
-                SKILL_BP
-                    .replace("{name}", s.name_is())
-                    .replace("{proficiency}", s.proficiency_is())
+                SKILL_BP.replace("{name}", s.name_is()).replacen(
+                    "{proficiency}",
+                    s.proficiency_is(),
+                    2,
+                )
             })
             .collect::<String>(),
     );
     bp.push_str(DIV_CLOSE_BP);
 
     // stacks
-    bp.push_str(
-        "<div class='skills-stacks skills-sub-section'>
-            <span class='title'>Stacks</span>",
-    );
+    // <span class='title'>Stacks</span>",
+    bp.push_str("<div class='skills-stacks skills-sub-section'>");
     bp.push_str(
         &skills
             .stacks_are()
@@ -148,10 +148,8 @@ fn generate_skills(skills: &Skills, bp: &mut String) {
     bp.push_str(DIV_CLOSE_BP);
 
     // languages
-    bp.push_str(
-        "<div class='skills-protos skills-sub-section'>
-            <span class='title'>Protocols</span>",
-    );
+    // <span class='title'>Protocols</span>",
+    bp.push_str("<div class='skills-protos skills-sub-section'>");
     bp.push_str(
         &skills
             .protos_are()

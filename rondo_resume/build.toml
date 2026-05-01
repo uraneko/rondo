@@ -1,0 +1,137 @@
+[meta]
+name = { family = "Makhlouf", given = "Iadh" }
+github = "https://github.com/uraneko"
+# phone = "(+216)22355794"
+email = "iadh_makhlouf@protonmail.com"
+country = "Tunisia"
+linkedin = "www.linkedin.com/in/iadh-makhlouf-875592228"
+
+[side-projects]
+# tapir = { technologies = [
+# 	"rust",
+# 	"http server",
+# 	"range middleware",
+# 	"vm tooling",
+# ], description = "tapir is meant to be a local server for use in launching qemu vms with server side files. It currently supports serving readonly files (boot/installation drives), work is in progress to support writable files (such as drives.)", git = "https://github.com/uraneko/tapir" }
+
+beef_stew = { technologies = [
+	"zig",
+	"cli",
+], description = "This project is meant to be a markdown composer cli tool. It's still in early developement. I'm writing it using zig. Writing in such a low level language was a bit tough at first, mainly the memory management aspect, as the absence of a GC meant that both memory allocation and freeing are my responsibility. What I did to tackle this problem was to try and write the program, fail at that, then read a few articles about the language's syntax at every failure. Once I had enough understanding of the syntax, the rest was a matter of std calls.", git = "https://github.com/uraneko/beef_stew" }
+
+capra = { technologies = [
+	"solid-js",
+	"javascript",
+	"rust",
+	"http",
+	"spa",
+	"sqlite",
+	"web security",
+	"password salting",
+	"password hashing",
+	"authentication",
+	"authorization",
+	"gateway server",
+], description = "This is a gateway server with a web client that handles authentication and authorization as well as user session management and external plugins/services integration. The frontend is written in solid-js `//github.com/uraneko/capra.client` while the backend is in rust `//github.com/uraneko/capra.server`. Security wise: the backend uses password hashing and salting, while cookies use the same-site and http-only flags to help protect against csrf and xss attacks. The main hurdle I face here is finding an ergonomic way to integrate the plugin services", git = "https://github.com/uraneko/capra-server" }
+
+pheasant = { technologies = [
+	"rust",
+	"http",
+	"services/middleware",
+	"http/1.1",
+	"http servers",
+	"ip/tcp",
+], description = "pheasant is a http web server framework written in rust. It's currently very basic with support for http1/1 and a couple of services, as well as async operations. Nonetheless, the biggest hurdle with writing an http server framework is the scope of http servers: a server is generally a transmitter of data from its own host machine to the client machine. It could in theory support any operation that its host machine is capable of. A server framework must then be built on top of a well defined non-restrictive pattern, allowing users to write any services they need. pheasant has already achieved a patternthat adheres to the above requirements.", git = "https://github.com/uraneko/pheasant" }
+
+makura = { technologies = [
+	"rust",
+	"decoding/encoding",
+	"cli",
+	"library",
+	"rfc",
+	"base64",
+], description = "This project is mostly a loose implementation of these 2 rfcs: `https://datatracker.ietf.org/doc/html/rfc4648` and `https://datatracker.ietf.org/doc/html/rfc9285`. It provides encoders/decoders for the most common base encodings including base 64, 32, 16 and base 45 encoding. I wrote this crate as an exercice in reading rfcs. While this should have been a simple task to accomplish, it turned out to be anything but. Once you start getting into the nitty-gritty of the decoding it becomes clear that writing a good checker that deduces the correct encoding of an input is sometimes pretty difficult or impossible. The crux of the problem was that matching the possible length patterns, padding rules and charactersets of the encodings against the input value would sometimes leave the checker with 2 or more possible encodings; only 1 of which does not fail at the time of decoding. This, though, was an xy problem; the mistake was relying on the above mentioned characteristics instead of matching the characters pattern and length of the input against every encoding's characterset's understood behavior.", git = "https://github.com/uraneko/makura" }
+# carbide = { technologies = [
+# 	"rust",
+# 	"linux",
+# 	"cli",
+# 	"input_event",
+# 	"rust/c-ffi",
+# ], description = "This is close to a rust implementation of evdev, it reads input events from event* files and parses them into c input_event struct data", git = "https://github.com/uraneko/carbide" }
+# serpent = { technologies = [
+# 	"gleam",
+# 	"functional programming",
+# 	"package manager",
+# 	"json parser",
+# 	"js tooling",
+# ], description = "[Early Developement] A hobby js package manager, runs on the beam (erlang)", git = "https://github.com/uraneko/serpent" }
+# jagaimo = { technologies = [
+# 	"rust",
+# 	"tokenizer",
+# 	"parser",
+# 	"proc-macro",
+# 	"CLI",
+# 	"terminal",
+# 	"shell",
+# ], description = "cli command parsing with support for custom command formats", git = "https://github.com/uraneko/jagaimo" }
+# hadhramaut = { technologies = [
+# 	"rust",
+# 	"tui",
+# 	"terminal",
+# 	"shell",
+# 	"rust/c-ffi",
+# 	"framework",
+# 	"multi-platform",
+# ], description = "[Early Developement] A terminal user interface framework for making TUI apps, supports input events, rendering, font styling and coloring, builtin components, etc.", git = "https://github.com/uraneko/hadhramaut" }
+# capra = { technologies = [
+# 	"rust",
+# 	"typescript",
+# 	"css",
+# 	"html",
+# 	"sql",
+# 	"spa",
+# 	"sqlite",
+# 	"rest",
+# 	"http server",
+# 	"js tooling",
+# ], description = "[Early Developement] An actix home server witn a web frontend. Offers plugin support and comes with a well featured filesystem plugin", git = "https://github.com/uraneko/capra" }
+# momotaro = { technologies = [
+# 	"typescript",
+# 	"library",
+# 	"shadow-dom",
+# 	"custom-elements",
+# 	"spa tooling",
+# ], description = "A typescript library for writing single page apps. This projects approach to js frontend development is based on the view that frameworks are too high level for many projects, it offers an abstraction layer over vanilla ES6 that is neither as high level as modern frameworks nor as feature rich", git = "https://github.com/uraneko/momotaro" }
+
+[experience]
+skip = true
+
+[skills]
+levels = ["beginner", "advanced_beginner", "intermediate", "advanced", "expert"]
+alt_name = "technologies"
+
+[skills.languages]
+rust = "intermediate"
+typescript = "intermediate"
+gleam = "advanced_beginner"
+python = "beginner"
+lua = "intermediate"
+zig = "intermediate"
+
+[skills.stacks]
+linux = "intermediate"
+terminal = "intermediate"
+github = "intermediate"
+git = "intermediate"
+
+[skills.protocols]
+sql = "advanced_beginner"
+http = "intermediate"
+ip_tcp = "advanced_beginner"
+socket_programming = "intermediate"
+
+[education]
+# takes: degree, major, university, year 
+university = "Tunis Business School"
+degree = "Bachelor of Science in Business Administration"
+major = "Business Analytics"

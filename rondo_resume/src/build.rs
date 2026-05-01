@@ -15,6 +15,7 @@ pub(crate) fn pandoc_build_resume(
         .set_input(InputKind::Pipe(html))
         .add_options(&[
             PandocOption::Standalone,
+            // PandocOption::PdfEngine("weasyprint".into()),
             PandocOption::PdfEngine("weasyprint".into()),
             PandocOption::Css("build.css".into()),
         ])
